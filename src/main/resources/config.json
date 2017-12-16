@@ -1,0 +1,37 @@
+{
+	"kafka": {
+		"class": "limero.mqtt.mqtt2graphite.MqttVerticle",
+		"worker": true,
+		"config": {
+			"include": "log.*.tech",
+			"exclude": "log.anakwaboe.tech",
+			"trace": "trace_perf_dev.log",
+			"metrics": "ubbe.dev",
+			"accept": {
+				"marker": "PERF"
+			},
+			"reject": {
+			},
+			"env": "dev",
+			"kafka": {
+				"group.id": "kafkaToGraphite_dev_dta",
+				"auto.offset.reset": "earliest",
+				"bootstrap.servers": "sbeld10447.devbe.development:9092,sbeld10448.devbe.development:9092,sbeld10449.devbe.development:9092",
+				"client.id": "kafkaReceiver2",
+				"value.deserializer": "org.apache.kafka.common.serialization.StringDeserializer",
+				"key.deserializer": "org.apache.kafka.common.serialization.StringDeserializer",
+				"enable.auto.commit": true,
+				"request.timeout.ms":60000,
+				"fetch.max.wait.ms": 50000,
+				"max.partition.fetch.bytes": 1000000
+			}
+		}
+	},
+	"graphite": {
+		"class": "limero.mqtt.mqtt2graphite.GraphiteVerticle",
+		"config": {
+			"host": "192.168.0.149",
+			"port": 2003
+		}
+	}
+}
