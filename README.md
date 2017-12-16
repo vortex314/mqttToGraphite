@@ -12,3 +12,33 @@ Normally each verticle should handle their own reconnects
 
 The configuration can be adapted by changing the config.json file. 
 
+```
+{
+	"mqtt": {
+		"class": "limero.mqtt.mqtt2graphite.MqttVerticle",
+		"worker": true,
+		"config": {
+			"publishTo": "metrics",
+			"host": "limero.ddns.net",
+			"port": 1883,
+			"subscribe": [
+				"src/#",
+				"dst/#"
+			],
+			"metricsInterval": 3000,
+			"metricsPrefix": "src/localhost/mqtt2graphite/mqtt/"
+		}
+	},
+	"graphite": {
+		"class": "limero.mqtt.mqtt2graphite.GraphiteVerticle",
+		"config": {
+			"subscribeTo": "metrics",
+			"publishMetricsTo": "metrics",
+			"host": "192.168.0.149",
+			"port": 2003,
+			"metricsInterval": 3000,
+			"metricsPrefix": "src/localhost/mqtt2graphite/graphite/"
+		}
+	}
+}
+```
