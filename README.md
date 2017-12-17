@@ -42,4 +42,4 @@ The configuration can be adapted by changing the config.json file.
 	}
 }
 ```
-![Sequence Diagram](https://github.com/vortex314/mqtt2graphite/doc/mqtt2graphite.png)
+![Sequence Diagram](https://github.com/vortex314/mqttToGraphite/doc/mqtt2graphite.png)
